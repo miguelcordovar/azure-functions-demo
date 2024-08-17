@@ -60,13 +60,11 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DD0C703AF63E4C17A31B34D9418BDFBC }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A9D79E413E1448559BC2E4EA2387575E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EB90C5337D1549F2AE1ADB4A7ADA3913 }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
@@ -75,4 +73,3 @@ jobs:
           app-name: 'azfnmacrdemo01'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          
