@@ -10,6 +10,6 @@ export async function HttpExample(request: HttpRequest, context: InvocationConte
 
 app.http('HttpExample', {
     methods: ['GET', 'POST'],
-    authLevel: 'anonymous',
+    authLevel: 'function',
     handler: HttpExample
 });
