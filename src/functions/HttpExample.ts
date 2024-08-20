@@ -9,7 +9,7 @@ export async function HttpExample(request: HttpRequest, context: InvocationConte
         message: `Hello, ${name}!`
     };
 
-    return { jsonBody: JSON.stringify(responseMessage)  };
+    return { jsonBody: responseMessage  };
 };
 
 app.http('HttpExample', {
