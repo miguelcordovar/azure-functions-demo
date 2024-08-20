@@ -5,7 +5,11 @@ export async function HttpExample(request: HttpRequest, context: InvocationConte
 
     const name = request.query.get('name') || await request.text() || 'nundo';
 
-    return { body: `Hola, ${name}!` };
+    const responseMessage = {
+        message: `Hello, ${name}!`
+    };
+
+    return { jsonBody: JSON.stringify(responseMessage)  };
 };
 
 app.http('HttpExample', {
